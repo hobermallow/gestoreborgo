@@ -8,7 +8,7 @@
 <style media="screen">
 table {
       width: 100%;
-  }
+}
 
 thead, tbody, tr, td, th { display: block; }
 
@@ -46,6 +46,7 @@ tbody td, thead th {
 </style>
   </head>
   <body>
+    <!--TABLE-->
     <div class="container table-responsive">
     <table class="table table-bordered table-hover">
       <thead>
@@ -76,10 +77,12 @@ tbody td, thead th {
         <th>
           id_stanza
         </th>
+        <th>
+        </th>
       </thead>
       <tbody>
     <?php
-      $servername = "192.168.0.103";
+      $servername = "bunkerstate.ddns.net";
       $username = "guest";
       $password = "nukethewhales";
       $conn;
@@ -94,7 +97,7 @@ tbody td, thead th {
             echo "<td>$value</td>";
           }
 
-          echo "<td><div class='checkbox-span'><input type='checkbox' form='form1' name='prenotazioni' value=".$row['id_pren']."></div></td>";
+          echo "<td><div class='checkbox-span'><input type='checkbox' form='form1' name='prenotazioni[]' value=".$row['id_pren']."></div></td>";
           echo "</tr>";
         }
       }
@@ -103,12 +106,13 @@ tbody td, thead th {
       }
       finally {
         $conn = null;
+        $result = null;
       }
       ?>
     </tbody>
     </table>
   </div>
-  <form class="" action="index.html" method="get" id="form1">
+  <form class="" action="deleteBooking.php" method="post" id="form1">
     <input type="submit" >
   </form>
   </body>
