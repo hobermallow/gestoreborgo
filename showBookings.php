@@ -2,10 +2,52 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>ciao</title>
+    <title>Bookings</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<style media="screen">
+table {
+      width: 100%;
+  }
+
+thead, tbody, tr, td, th { display: block; }
+
+tr:after {
+  content: ' ';
+  display: block;
+  visibility: hidden;
+  clear: both;
+}
+
+thead th {
+  height: 40px;
+
+  text-align: left;
+}
+td {
+  height: 38px;
+}
+
+tbody {
+  height: 300px;
+  overflow-y: auto;
+}
+
+thead {
+  /* fallback */
+}
+
+
+tbody td, thead th {
+  width: 10%;
+  float: left;
+}
+
+</style>
   </head>
   <body>
-    <table border="2">
+    <div class="container table-responsive">
+    <table class="table table-bordered table-hover">
       <thead>
         <th>
           id_pren
@@ -54,6 +96,8 @@
           foreach ($row as $key => $value) {
             echo "<td>$value</td>";
           }
+
+          echo "<td><div class='checkbox-span'><input type='checkbox' form='form1' name='prenotazioni' value=".$row['id_pren']."></div></td>";
           echo "</tr>";
         }
       }
@@ -66,5 +110,9 @@
       ?>
     </tbody>
     </table>
+  </div>
+  <form class="" action="index.html" method="get" id="form1">
+    <input type="submit" >
+  </form>
   </body>
 </html>
