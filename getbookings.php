@@ -6,7 +6,7 @@
 </head>
 <body>
   <?php
-  $servername = "192.168.0.103";
+  $servername = "bunkerstate.ddns.net";
   $username = "guest";
   $password = "nukethewhales";
   $conn;
@@ -14,8 +14,8 @@
     $conn = new PDO("mysql:host=$servername;dbname=sitooriginale", $username, $password);
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // $table = $_GET['q'];
     $result = $conn->query("SELECT * FROM prenotazione");
-    echo "<table>";
     echo "<thead>
       <th>
         id_pren
@@ -57,7 +57,6 @@
       echo "</tr>";
     }
     echo "</tbody>";
-    echo "</table>";
   }
   catch(PDOException $e)  {
     echo "Connection failed: " . $e->getMessage();

@@ -91,7 +91,7 @@
     <form class="" action="deleteBooking.php" method="post" id="form1">
       <input type="submit" >
       <select name="cars" onchange="showTable()">
-        <option value="volvo">Volvo</option>
+        <option value="prenotazione">Prenotazioni</option>
         <option value="saab">Saab</option>
         <option value="fiat">Fiat</option>
         <option value="audi">Audi</option>
