@@ -60,7 +60,7 @@
     <table class="table table-bordered table-hover" id="tabella">
     </table>
     <form class="" action="deleteBooking.php" method="post" id="form1">
-      <input type="submit" >
+      <input type="submit" value="Delete">
       <select name="tables" onchange="showTable(this.value)">
         <option value="prenotazione">Prenotazioni</option>
         <option value="prezzo">Prezzi</option>
