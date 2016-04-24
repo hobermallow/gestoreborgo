@@ -68,11 +68,10 @@
     </div>
     <form class="" action="deleteBooking.php" method="post" id="form1">
       <input type="submit" >
-      <select name="cars" onchange="showTable()">
+      <select name="tables" onchange="showTable()">
         <option value="prenotazione">Prenotazioni</option>
-        <option value="saab">Saab</option>
-        <option value="fiat">Fiat</option>
-        <option value="audi">Audi</option>
+        <option value="prezzo">Prezzi</option>
+        <option value="stanza">Stanze</option>
       </select>
     </form>
   </body>
