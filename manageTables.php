@@ -58,8 +58,9 @@
 <body>
   <div class="container table-responsive">
     <table class="table table-bordered table-hover" id="tabella">
+      <script>showTable("prenotazione");</script>
     </table>
-    <form class="" action="deleteBooking.php" method="post" id="form1">
+    <form  method="POST" id="form1" action="deleteBooking.php">
       <input type="submit" value="Delete">
       <select name="tables" onchange="showTable(this.value)">
         <option value="prenotazione">Prenotazioni</option>
