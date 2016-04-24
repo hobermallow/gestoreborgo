@@ -10,7 +10,7 @@
   <form class="" action="index.html" method="post">
     <div class="input-group">
       <span class="input-group-addon" id="basic-addon1">@</span>
-      <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+      <input type="text" class="form-control" placeholder="Nome" aria-describedby="basic-addon1">
     </div>
 
     <div class="input-group">
