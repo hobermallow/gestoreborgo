@@ -58,17 +58,10 @@
 <body>
   <div class="container table-responsive">
     <table class="table table-bordered table-hover" id="tabella">
-    </style>
-  </head>
-  <body>
-    <!--TABLE-->
-    <div class="container table-responsive">
-      <table class="table table-bordered table-hover">
-      </table>
-    </div>
+    </table>
     <form class="" action="deleteBooking.php" method="post" id="form1">
       <input type="submit" >
-      <select name="tables" onchange="showTable()">
+      <select name="tables" onchange="showTable(this.value)">
         <option value="prenotazione">Prenotazioni</option>
         <option value="prezzo">Prezzi</option>
         <option value="stanza">Stanze</option>
