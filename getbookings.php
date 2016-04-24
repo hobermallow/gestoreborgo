@@ -53,7 +53,7 @@
         echo "<td>$value</td>";
       }
 
-      echo "<td><div class='checkbox-span'><input type='checkbox' form='form1' name='prenotazioni' value=".$row['id_pren']."></div></td>";
+      echo "<td><div class='checkbox-span'><input type='checkbox' form='form1' name='prenotazioni[]' value=".$row['id_pren']."></div></td>";
       echo "</tr>";
     }
     echo "</tbody>";
