@@ -17,7 +17,7 @@ function showTable(str) {
       }
     };
     document.getElementById("tabella").innerHTML = '<div style="text-align: center;"><img src="loading.gif" height="32" width="32"></div>';
-    xmlhttp.open("GET", "modules/getbookings.php",true);
+    xmlhttp.open("GET", "modules/gettables.php?table=" + str,true);
     xmlhttp.send();
   }
 }
