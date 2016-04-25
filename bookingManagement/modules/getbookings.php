@@ -2,7 +2,6 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title></title>
 </head>
 <body>
   <?php
@@ -44,6 +43,7 @@
       <th>
         id_stanza
       </th>
+      <th></th>
     </thead>
     ";
     echo "<tbody>";

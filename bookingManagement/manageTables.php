@@ -6,13 +6,36 @@
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <style media="screen">
+  <head>
+  <style media="screen">
   table {
     width: 100%;
   }
-  <head>
 
   table {
-    width: 100%;
+  	font-family:Arial, Helvetica, sans-serif;
+  	color:#666;
+  	font-size:12px;
+  	text-shadow: 1px 1px 0px #fff;
+  	background:#eaebec;
+  	border:#ccc 1px solid;
+
+  	-moz-border-radius:3px;
+  	-webkit-border-radius:3px;
+  	border-radius:3px;
+
+  	-moz-box-shadow: 0 1px 2px #d1d1d1;
+  	-webkit-box-shadow: 0 1px 2px #d1d1d1;
+  	box-shadow: 0 1px 2px #d1d1d1;
+  }
+  table th {
+  	padding:21px 25px 22px 25px;
+  	border-top:1px solid #fafafa;
+  	border-bottom:1px solid #e0e0e0;
+
+  	background: #ededed;
+  	background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#ebebeb));
+  	background: -moz-linear-gradient(top,  #ededed,  #ebebeb);
   }
 
   thead, tbody, tr, td, th { display: block; }
@@ -52,18 +75,23 @@
 </head>
 <body>
   <div class="container table-responsive">
-    <table class="table table-bordered table-hover" id="tabella">
+    <table class="table table-hover" id="tabella">
       <script>showTable("prenotazione");</script>
     </table>
 
-    <form  method="POST" id="form1" action="modules/deleteBooking.php">
-      <input type="submit" value="Delete">
-      <select name="tables" onchange="showTable(this.value)">
-        <option value="prenotazione">Prenotazioni</option>
-        <option value="prezzo">Prezzi</option>
-        <option value="stanza">Stanze</option>
-      </select>
+    <form  method="POST" id="form1" action="modules/deleteBooking.php"/>
     </form>
+
+    <input type="submit" form="form1" value="Delete">
+
+    <select id="selecttable" name="tables" onchange="showTable(this.value)">
+      <option value="prenotazione" selected>Prenotazioni</option>
+      <option value="prezzo">Prezzi</option>
+      <option value="stanza">Stanze</option>
+    </select>
+
+    <button onclick='showTable(document.getElementById("selecttable").value)'>Refresh</button>
+
   </div>
 </body>
 </html>
