@@ -28,6 +28,11 @@
   	-webkit-box-shadow: 0 1px 2px #d1d1d1;
   	box-shadow: 0 1px 2px #d1d1d1;
   }
+
+  tbody tr:nth-child(odd) {
+     background-color: white;
+  }
+
   table th {
   	padding:21px 25px 22px 25px;
   	border-top:1px solid #fafafa;
