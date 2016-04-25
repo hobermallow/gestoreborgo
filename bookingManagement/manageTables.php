@@ -5,7 +5,6 @@
   <title>Bookings</title>
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-  <style media="screen">
   <head>
   <style media="screen">
   table {
@@ -84,7 +83,7 @@
       <script>showTable("prenotazione");</script>
     </table>
 
-    <form  method="POST" id="form1" action="modules/deleteBooking.php"/>
+    <form  method="POST" id="form1" action="modules/deletebooking.php"/>
     </form>
 
     <input type="submit" form="form1" value="Delete">
