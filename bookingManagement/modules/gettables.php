@@ -5,9 +5,6 @@
 </head>
 <body>
   <?php
-  public function printHeader($table)
-  {
-    if($table == 'prenotazione') {
       echo "<thead>
       <th>
       id_pren
@@ -39,8 +36,6 @@
       <th></th>
       </thead>
       ";
-    }
-  }
   $servername = "bunkerstate.ddns.net";
   $username = "guest";
   $password = "nukethewhales";
