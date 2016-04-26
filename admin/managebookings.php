@@ -68,14 +68,19 @@
 
     <form method="POST" id="form1" action="modules/bookings/deletebooking.php"/></form>
 
-    <input class="btn  btn-danger" type="submit" form="form1" value="Delete">
+    <button class="btn  btn-danger" type="submit" form="form1" >
+      <span class="glyphicon glyphicon-trash">Cancella</span>
+    </button>
+
     <select class="selectpicker" data-container="body" id="selecttable" name="tables" onchange="showTable(this.value)">
       <option value="prenotazione" selected>Prenotazioni</option>
       <option value="prezzo">Prezzi</option>
       <option value="stanza">Stanze</option>
     </select>
 
-    <button class="btn btn-default" onclick='showTable(document.getElementById("selecttable").value)'>Refresh</button>
+    <button class="btn btn-default" onclick='showTable(document.getElementById("selecttable").value)'>
+      <span class="glyphicon glyphicon-refresh">Refresh</span>
+    </button>
   </div>
 
 </body>
