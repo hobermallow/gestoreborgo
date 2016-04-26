@@ -1,8 +1,8 @@
 <?php
-include '../../tools/utils.php';
+include '../../../tools/utils.php';
 
 //redirect if no $_POST is set
-if(!isset($_POST['prenotazioni'])) {header('Location: ' . $_SERVER['HTTP_REFERER']);//TODO modifica redirect}
+if(!isset($_POST['prenotazioni'])) {header('Location: ' . $_SERVER['HTTP_REFERER']);}//TODO modifica redirect
 
 $conn;
 try {

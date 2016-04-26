@@ -3,7 +3,7 @@ function showTable(str) {
     document.getElementById("tabella").innerHTML = "";
     return;
   } else {
-      if (window.XMLHttpRequest) {
+    if (window.XMLHttpRequest) {
       // code for IE7+, Firefox, Chrome, Opera, Safari
       xmlhttp = new XMLHttpRequest();
     } else {
@@ -20,7 +20,7 @@ function showTable(str) {
     //set loading gif before sending request
     document.getElementById("tabella").innerHTML = '<div style="text-align: center;"><img src="loading.gif" height="32" width="32"></div>';
     //sets xmlhttp request to GET and sends it
-    xmlhttp.open("GET", "modules/gettables.php?table=" + str,true);
+    xmlhttp.open("GET", "modules/bookings/getbookings.php?table=" + str,true);
     xmlhttp.send();
   }
 }

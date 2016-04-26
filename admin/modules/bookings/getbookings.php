@@ -1,42 +1,25 @@
 <!DOCTYPE html>
-<?php include '../../tools/utils.php'; ?>
+<?php include '../../../tools/utils.php'; ?>
 <html>
+
 <head>
   <meta charset="utf-8">
 </head>
+
 <body>
-  <?php
-      echo "<thead>
-      <th>
-      id_pren
-      </th>
-      <th>
-      nome
-      </th>
-      <th>
-      cognome
-      </th>
-      <th>
-      da
-      </th>
-      <th>
-      a
-      </th>
-      <th>
-      n_adulti
-      </th>
-      <th>
-      n_bambini
-      </th>
-      <th>
-      prezzo_tot
-      </th>
-      <th>
-      id_stanza
-      </th>
-      <th></th>
-      </thead>
-      ";
+  <thead>
+    <th>id_pren</th>
+    <th>nome</th>
+    <th>cognome</th>
+    <th>da</th>
+    <th>a</th>
+    <th>n_adulti</th>
+    <th>n_bambini</th>
+    <th>prezzo_tot</th>
+    <th>id_stanza</th>
+    <th></th>
+  </thead>
+  <?php //prints the table's content in the DB
   $conn;
   try {
     $conn = connectToDB();
@@ -49,7 +32,6 @@
       foreach ($row as $key => $value) {
         echo "<td>$value</td>";
       }
-
       echo "<td><div class='checkbox-span'><input type='checkbox' form='form1' name='prenotazioni[]' value=".$row['id_pren']."></div></td>";
       echo "</tr>";
     }
@@ -62,5 +44,7 @@
     $conn = null;
   }
   ?>
+
 </body>
+
 </html>
