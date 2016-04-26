@@ -7,37 +7,39 @@
   <?php
   public function printHeader($table)
   {
-    echo "<thead>
-    <th>
-    id_pren
-    </th>
-    <th>
-    nome
-    </th>
-    <th>
-    cognome
-    </th>
-    <th>
-    da
-    </th>
-    <th>
-    a
-    </th>
-    <th>
-    n_adulti
-    </th>
-    <th>
-    n_bambini
-    </th>
-    <th>
-    prezzo_tot
-    </th>
-    <th>
-    id_stanza
-    </th>
-    <th></th>
-    </thead>
-    ";
+    if($table == 'prenotazione') {
+      echo "<thead>
+      <th>
+      id_pren
+      </th>
+      <th>
+      nome
+      </th>
+      <th>
+      cognome
+      </th>
+      <th>
+      da
+      </th>
+      <th>
+      a
+      </th>
+      <th>
+      n_adulti
+      </th>
+      <th>
+      n_bambini
+      </th>
+      <th>
+      prezzo_tot
+      </th>
+      <th>
+      id_stanza
+      </th>
+      <th></th>
+      </thead>
+      ";
+    }
   }
   $servername = "bunkerstate.ddns.net";
   $username = "guest";
