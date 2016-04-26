@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php include '../../tools/utils.php'; ?>
 <html>
 <head>
   <meta charset="utf-8">
@@ -36,14 +37,9 @@
       <th></th>
       </thead>
       ";
-  $servername = "bunkerstate.ddns.net";
-  $username = "guest";
-  $password = "nukethewhales";
   $conn;
   try {
-    $conn = new PDO("mysql:host=$servername;dbname=sitooriginale", $username, $password);
-    // set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn = connectToDB();
     $table = $_REQUEST['table'];
     $result = $conn->query("SELECT * FROM $table;");
 

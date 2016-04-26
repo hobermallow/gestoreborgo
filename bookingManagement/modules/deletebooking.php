@@ -1,17 +1,17 @@
 <?php
+include '../../tools/utils.php';
 
-$servername = "bunkerstate.ddns.net";
-$username = "guest";
-$password = "nukethewhales";
+//redirect if no $_POST is set
+if(!isset($_POST['prenotazioni'])) {header('Location: ' . $_SERVER['HTTP_REFERER']);//TODO modifica redirect}
+
 $conn;
 try {
-  $conn = new PDO("mysql:host=$servername;dbname=sitooriginale", $username, $password);
-  // set the PDO error mode to exception
-  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  $conn = connectToDB();
 } catch(PDOException $e)  {
   die("Connection failed: " . $e->getMessage());
 }
 
+//Builds the delete query with the bookings' ids passed on $_POST
 $querystr = "DELETE FROM prenotazione WHERE ";
 
 $length = count($_POST['prenotazioni']);
@@ -19,7 +19,9 @@ foreach ($_POST['prenotazioni'] as $i => $id) {
   $querystr = $querystr."id_pren=$id";
   if($i != $length-1) { $querystr = $querystr.' or '; }
 }
-$query = $conn->prepare($querystr);
+$query = $conn->prepare($querystr);//prepared query
+
+//try to execute the query
 try {
   $query->execute();
   header('Location: ' . $_SERVER['HTTP_REFERER']);//TODO modifica redirect
