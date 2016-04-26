@@ -12,4 +12,15 @@ function connectToDB() {
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   return $conn;
 }
+
+function printTableHeader($conn, $table)
+{
+  $header = "<thead>";
+  $fields = $conn->query("DESCRIBE $table");
+  while ($field = $fields->fetchColumn()) {
+    $header.="<th>".$field."</th>";
+  }
+  $header .= "</thead>";
+  return $header;
+}
 ?>
