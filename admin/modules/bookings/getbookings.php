@@ -7,7 +7,7 @@
 </head>
 
 <body>
-  <thead>
+  <!-- <thead>
     <th>id_pren</th>
     <th>nome</th>
     <th>cognome</th>
@@ -18,13 +18,15 @@
     <th>prezzo_tot</th>
     <th>id_stanza</th>
     <th></th>
-  </thead>
+  </thead> -->
   <?php //prints the table's content in the DB
   $conn;
   try {
     $conn = connectToDB();
     $table = $_REQUEST['table'];
     $result = $conn->query("SELECT * FROM $table;");
+    $header = printTableHeader($conn, $table);
+    echo "$header";
 
     echo "<tbody>";
     while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
