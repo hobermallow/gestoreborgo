@@ -14,6 +14,7 @@
   <script src="modules/ajax-management.js" charset="utf-8"></script>
   <!--custom CSS-->
   <style media="screen">
+  body{background-color: #eee;}
 
   table {
     font-family:Arial, Helvetica, sans-serif;
@@ -22,10 +23,11 @@
     text-shadow: 1px 1px 0px #fff;
     background:#eaebec;
     border:#ccc 1px solid;
+    border-collapse: separate;
 
-    -moz-border-radius:3px;
-    -webkit-border-radius:3px;
-    border-radius:3px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius:5px;
 
     -moz-box-shadow: 0 1px 2px #d1d1d1;
     -webkit-box-shadow: 0 1px 2px #d1d1d1;
