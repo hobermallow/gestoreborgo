@@ -5,6 +5,40 @@
 </head>
 <body>
   <?php
+  public function printHeader($table)
+  {
+    echo "<thead>
+    <th>
+    id_pren
+    </th>
+    <th>
+    nome
+    </th>
+    <th>
+    cognome
+    </th>
+    <th>
+    da
+    </th>
+    <th>
+    a
+    </th>
+    <th>
+    n_adulti
+    </th>
+    <th>
+    n_bambini
+    </th>
+    <th>
+    prezzo_tot
+    </th>
+    <th>
+    id_stanza
+    </th>
+    <th></th>
+    </thead>
+    ";
+  }
   $servername = "bunkerstate.ddns.net";
   $username = "guest";
   $password = "nukethewhales";
@@ -15,37 +49,7 @@
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $table = $_REQUEST['table'];
     $result = $conn->query("SELECT * FROM $table;");
-    echo "<thead>
-      <th>
-        id_pren
-      </th>
-      <th>
-        nome
-      </th>
-      <th>
-        cognome
-      </th>
-      <th>
-        da
-      </th>
-      <th>
-        a
-      </th>
-      <th>
-        n_adulti
-      </th>
-      <th>
-        n_bambini
-      </th>
-      <th>
-        prezzo_tot
-      </th>
-      <th>
-        id_stanza
-      </th>
-      <th></th>
-    </thead>
-    ";
+
     echo "<tbody>";
     while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
       echo "<tr>";
