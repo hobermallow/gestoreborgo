@@ -68,9 +68,8 @@
       <script>showTable("prenotazione");</script>
     </table>
 
-    <form method="POST" id="form1" action="modules/bookings/deletebooking.php"/></form>
-
-    <button class="btn  btn-danger" type="submit" form="form1" >
+    <form method="GET" id="deletebookings" action="modules/bookings/deletebooking.php"/></form>
+    <button type="button" class="btn btn-danger" form="deletebookings" onclick="deleteBookings(this.form)">
       <span class="glyphicon glyphicon-trash">Cancella</span>
     </button>
 
@@ -86,4 +85,5 @@
   </div>
 
 </body>
+
 </html>
