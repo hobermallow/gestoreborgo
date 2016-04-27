@@ -10,9 +10,9 @@ if(isset($_POST['user']) and isset($_POST['p'])) {
     echo $e->getMessage();
   }
   if(login($_POST['user'], $_POST['p'], $conn)) {
-    echo "login riuscito";
+    header("Location: ../admin/managebookings.php");
   } else {
-    echo "login fallito";
+    header("Location: login_page.php?error=1");
   }
 }
 ?>

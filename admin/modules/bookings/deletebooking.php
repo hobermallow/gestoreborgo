@@ -2,8 +2,7 @@
 include '../../../tools/utils.php';
 
 //redirect if no $_POST is set
-if(!isset($_POST['prenotazioni'])) {header('Location: ' . $_SERVER['HTTP_REFERER']);}//TODO modifica redirect
-
+if(!isset($_POST['prenotazioni'])) {return;}
 $conn;
 try {
   $conn = connectToDB();
@@ -24,7 +23,6 @@ $query = $conn->prepare($querystr);//prepared query
 //try to execute the query
 try {
   $query->execute();
-  header('Location: ' . $_SERVER['HTTP_REFERER']);//TODO modifica redirect
 } catch (PDOException $e){
   die("Query failed: " . $e->getMessage());
 } finally {
