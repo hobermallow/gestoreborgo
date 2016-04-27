@@ -26,7 +26,7 @@
     $table = $_REQUEST['table'];
     $query = "select * from $table";
 
-    if(isset($_REQUEST['cognome'])) {
+    if(isset($_REQUEST['cognome']) && $table=="prenotazione") {
       $cognome = $_REQUEST['cognome'];
       $query.=" where cognome='$cognome'";
     }

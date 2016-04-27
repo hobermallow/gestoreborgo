@@ -89,7 +89,6 @@
 
     <select class="selectpicker" data-container="body" id="selecttable" form="getbookingsWithFilter" name="table" onchange="getBookings(this.form)">
       <option value="prenotazione" selected>Prenotazioni</option>
-      <option value="prezzo">Prezzi</option>
       <option value="stanza">Stanze</option>
     </select>
 
