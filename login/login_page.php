@@ -58,20 +58,14 @@
 
   <div class="container">
 
-    <form class="form-signin" method="POST" action="login_page.php">
+    <form class="form-signin" method="POST" action="process_login.php">
       <h2 class="form-signin-heading">Please login</h2>
       <label for="inputUsername" class="sr-only">Username</label>
-      <input type="username" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+      <input type="username" name="user" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
       <label for="inputPassword" class="sr-only">Password</label>
       <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
       <button class="btn btn-lg btn-primary btn-block" type="button" onclick='formhash(this.form, this.form.inputUsername, this.form.inputPassword);'>Login</button>
     </form>
-
-    <?php
-    if(isset($_POST['p'])) {
-      echo $_POST['p'];
-    }
-     ?>
 
   </div>
 

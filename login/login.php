@@ -11,26 +11,27 @@ function sec_session_start() {
 }
 
 function login($username, $password, $pdo) {
-  if($stmt = $pdo->prepare("SELECT (username, password, salt) FROM admin WHERE username = ? LIMIT 1")) {
-    $stm->bindParam(1, $username);
-    $stmt->execute();
+  if($stmt = $pdo->prepare("SELECT username, password, salt FROM admin WHERE username = :usr LIMIT 1")) {
+    $stmt->execute(array(':usr' => $username));
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    $password = hash('sha512', $password.$result['salt']);
-    if($result != null) {
-      if($db_password == $password) { // Verifica che la password memorizzata nel database corrisponda alla password fornita dall'utente.
+    $saltedpswd = hash('sha512', $password.$result['salt']);
+    if(count($result) > 0) {
+      if($result['password'] == $saltedpswd) { // Verifica che la password memorizzata nel database corrisponda alla password fornita dall'utente.
         // Password corretta!
         $user_browser = $_SERVER['HTTP_USER_AGENT']; // Recupero il parametro 'user-agent' relativo all'utente corrente.
-
         $username = preg_replace("/[^a-zA-Z0-9_\-]+/", "", $username); // ci proteggiamo da un attacco XSS
         $_SESSION['username'] = $username;
-        $_SESSION['login_string'] = hash('sha512', $password.$user_browser);
+        $_SESSION['login_string'] = hash('sha512', $saltedpswd.$user_browser);
         // Login eseguito con successo.
         return true;
       } else {
-        return false
+        return false;
       }
     } else {
       return false;
     }
+  } else {
+    return false;
   }
-  ?>
+}
+?>
