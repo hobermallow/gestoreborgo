@@ -1,5 +1,5 @@
 <?php
-include "login.php";
+include "login_func.php";
 include "../tools/utils.php";
 sec_session_start();
 
