@@ -1,77 +1,36 @@
-<!DOCTYPE html>
-<html>
+<?php
+function sec_session_start() {
+  $session_name = 'sec_session_id'; // Imposta un nome di sessione
+  $httponly = true; // Questo impedirà ad un javascript di essere in grado di accedere all'id di sessione.
+  ini_set('session.use_only_cookies', 1); // Forza la sessione ad utilizzare solo i cookie.
+  $cookieParams = session_get_cookie_params(); // Legge i parametri correnti relativi ai cookie.
+  session_set_cookie_params($cookieParams["lifetime"], $cookieParams["path"], $cookieParams["domain"], false, $httponly);
+  session_name($session_name); // Imposta il nome di sessione con quello prescelto all'inizio della funzione.
+  session_start(); // Avvia la sessione php.
+  session_regenerate_id(); // Rigenera la sessione e cancella quella creata in precedenza.
+}
 
-<head>
-  <title>
-    Login
-  </title>
+function login($username, $password, $pdo) {
+  if($stmt = $pdo->prepare("SELECT (username, password, salt) FROM admin WHERE username = ? LIMIT 1")) {
+    $stm->bindParam(1, $username);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $password = hash('sha512', $password.$result['salt']);
+    if($result != null) {
+      if($db_password == $password) { // Verifica che la password memorizzata nel database corrisponda alla password fornita dall'utente.
+        // Password corretta!
+        $user_browser = $_SERVER['HTTP_USER_AGENT']; // Recupero il parametro 'user-agent' relativo all'utente corrente.
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-  integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
-  <style type="text/css">
-  body {
-    padding-top: 40px;
-    padding-bottom: 40px;
-    background-color: #eee;
+        $username = preg_replace("/[^a-zA-Z0-9_\-]+/", "", $username); // ci proteggiamo da un attacco XSS
+        $_SESSION['username'] = $username;
+        $_SESSION['login_string'] = hash('sha512', $password.$user_browser);
+        // Login eseguito con successo.
+        return true;
+      } else {
+        return false
+      }
+    } else {
+      return false;
+    }
   }
-
-  .form-signin {
-    max-width: 330px;
-    padding: 15px;
-    margin: 0 auto;
-  }
-  .form-signin .form-signin-heading,
-  .form-signin .checkbox {
-    margin-bottom: 10px;
-  }
-  .form-signin .checkbox {
-    font-weight: normal;
-  }
-  .form-signin .form-control {
-    position: relative;
-    height: auto;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    padding: 10px;
-    font-size: 16px;
-  }
-  .form-signin .form-control:focus {
-    z-index: 2;
-  }
-  .form-signin input[type="email"] {
-    margin-bottom: -1px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-  .form-signin input[type="password"] {
-    margin-bottom: 10px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-  }
-  </style>
-</head>
-
-<body>
-
-  <div class="container">
-
-    <form class="form-signin" method="post" action="">
-      <h2 class="form-signin-heading">Please login</h2>
-      <label for="inputUsername" class="sr-only">Username</label>
-      <input type="username" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
-      <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
-      </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-    </form>
-
-  </div>
-
-</body>
-</html>
+  ?>
