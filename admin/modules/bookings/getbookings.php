@@ -24,11 +24,19 @@
   try {
     $conn = connectToDB();
     $table = $_REQUEST['table'];
-    $result = $conn->query("SELECT * FROM $table;");
+    $query = "select * from $table";
+
+    if(isset($_REQUEST['cognome'])) {
+      $cognome = $_REQUEST['cognome'];
+      $query.=" where cognome='$cognome'";
+    }
+    $query.=";";
+    $result = $conn->query("$query");
     $header = printTableHeader($conn, $table);
     echo "$header";
 
     echo "<tbody>";
+
     while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
       echo "<tr>";
       foreach ($row as $key => $value) {
