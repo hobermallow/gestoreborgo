@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <?php //Check del login
-include "../tools/connectToDB.php";
 include "../login/login_func.php";
+include "../tools/utils.php";
+$conn=connectToDB();
 sec_session_start();
 if(!login_check($conn)) {
   header("Location: ../login/login_page.php");

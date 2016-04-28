@@ -1,14 +1,17 @@
+<?php //Check del login
+include "../../../tools/utils.php";
+include "../../../login/login_func.php";
+$conn = connectToDB();
+sec_session_start();
+if(!login_check($conn)) {
+  header("Location: ../../../login/login_page.php");
+}
+$conn=null;
+?>
 <?php
-include '../../../tools/utils.php';
-
 //redirect if no $_POST is set
 if(!isset($_POST['prenotazioni'])) {return;}
-$conn;
-try {
-  $conn = connectToDB();
-} catch(PDOException $e)  {
-  die("Connection failed: " . $e->getMessage());
-}
+$conn = connectToDB();
 
 //Builds the delete query with the bookings' ids passed on $_POST
 $querystr = "DELETE FROM prenotazione WHERE ";
