@@ -12,8 +12,15 @@ function sec_session_start() {
 
 function login($username, $password, $pdo) {
   if($stmt = $pdo->prepare("SELECT username, password, salt FROM admin WHERE username = :usr LIMIT 1")) {
-    $stmt->execute(array(':usr' => $username));//prendo i valori dell'utente dal DB
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    try {
+        $stmt->execute(array(':usr' => $username));//prendo i valori dell'utente dal DB
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch(PDOException $e) {
+        $pdo = null;
+        die($e->getMessage());
+    } finally {
+        $stmt=null;   
+    }
     $saltedpswd = hash('sha512', $password.$result['salt']);//ricreo la password con con la password fornita e il salt
     if(count($result) > 0) {
       if($result['password'] == $saltedpswd) { // Verifica password database con quella ricreata a partire dalla pass fornita.
@@ -41,8 +48,15 @@ function login_check($pdo) {
     $user_browser = $_SERVER['HTTP_USER_AGENT'];
 
     if($stmt = $pdo->prepare("SELECT password FROM admin WHERE username = :usr LIMIT 1")) {
-      $stmt->execute(array(':usr' => $username));//prendo i valori dell'utente dal DB
-      $result = $stmt->fetch(PDO::FETCH_ASSOC);
+      try {
+        $stmt->execute(array(':usr' => $username));//prendo i valori dell'utente dal DB
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+      } catch(PDOException $e) {
+        $pdo = null;
+        die($e->getMessage());
+      } finally {
+        $stmt=null;   
+      }
       if(count($result) > 0) {
         $password = $result['password'];
         $login_check = hash('sha512', $password.$user_browser);
