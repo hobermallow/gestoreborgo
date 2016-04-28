@@ -92,8 +92,6 @@ $conn=null;
       <span class="glyphicon glyphicon-trash">Cancella</span>
     </button>
 
-
-
     <form id="getbookingsWithFilter" action="modules/bookings/getbookings.php" method="GET"></form>
 
     <select class="selectpicker" data-container="body" id="selecttable" form="getbookingsWithFilter" name="table" onchange="getBookings(this.form)">
@@ -105,14 +103,13 @@ $conn=null;
       <span class="glyphicon glyphicon-refresh">Refresh</span>
     </button>
 
-<<<<<<< HEAD
     <a class="btn btn-default" href="../login/logout.php">Logout</a>
-=======
+
     <input type="text" name="cognome" value="" form="getbookingsWithFilter"  placeholder="Cognome">
     <button type="button" class="btn btn-default" form="getbookingsWithFilter" onclick="getBookings(this.form)">
       <span class="glyphicon glyphicon-filter">Filtra</span>
     </button>
->>>>>>> 6359efc497ce28be6a01430ff7beb2e91547f171
+
   </div>
 
 </body>
