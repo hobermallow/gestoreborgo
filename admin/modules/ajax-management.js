@@ -18,7 +18,6 @@ function submitAjaxForm(method, form, callback) {
     // code for IE6, IE5
     xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
   }
-
   xmlhttp.onreadystatechange = function() {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
       callback.call();
@@ -60,6 +59,13 @@ function showTable(str) {
     xmlhttp.open("GET", "modules/bookings/getbookings.php?table=" + str,true);
     xmlhttp.send();
   }
+}
+
+function getBookings(form) {
+  submitAjaxForm("GET", form, function() {
+      document.getElementById("tabella").innerHTML = xmlhttp.responseText;
+  });
+
 }
 
 function deleteBookings(form) {
