@@ -52,6 +52,9 @@
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
+  #err {
+    height: 0px;
+  }
   </style>
 </head>
 
@@ -60,10 +63,19 @@
   <div class="container">
     <?php if(isset($_GET['error'])):?>
     <div class="col-sm-3 col-xs-3"></div>
-    <div class="alert alert-danger alert-dismissible fade in col-sm-6 col-xs-6">
-      <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <div id="anim"></div>
+    <div class="alert alert-danger alert-dismissible col-sm-6 col-xs-6" id="err">
+      <a href="" class="close" data-dismiss="alert" aria-label="close" onclick="closeAnim()">&times;</a>
+      <script>
+        function closeAnim() {
+          $('#err').css('position', 'absolute');
+          $('#anim').css('height', '40px');
+          $('#anim').animate({'height': '0px'}, 500);
+        }
+      </script>
       <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
       <strong>Errore!</strong> Nome utente o password sbagliata.
+      <script> $('#err').animate({'height': '55px'}, 500);</script>
     </div>
     <?php endif;?>
 

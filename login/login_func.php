@@ -33,4 +33,25 @@ function login($username, $password, $pdo) {
     return false;
   }
 }
-?>
+
+function login_check($pdo) {
+  if(isset($_SESSION['username']) and isset($_SESSION['login_string'])) {
+    $login_string = $_SESSION['login_string'];
+    $username = $_SESSION['username'];
+    $user_browser = $_SERVER['HTTP_USER_AGENT'];
+
+    if($stmt = $pdo->prepare("SELECT password FROM admin WHERE username = :usr LIMIT 1")) {
+      $stmt->execute(array(':usr' => $username));//prendo i valori dell'utente dal DB
+      $result = $stmt->fetch(PDO::FETCH_ASSOC);
+      if(count($result) > 0) {
+        $password = $result['password'];
+        $login_check = hash('sha512', $password.$user_browser);
+        if($login_check == $login_string) {
+          return true;
+        }
+      }
+    }
+  }
+  return false;
+}
+  ?>

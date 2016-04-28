@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+<?php //Check del login
+include "../tools/connectToDB.php";
+include "../login/login_func.php";
+sec_session_start();
+if(!login_check($conn)) {
+  header("Location: ../login/login_page.php");
+}
+$conn=null;
+?>
 <html>
 <head>
   <meta charset="utf-8">
@@ -82,6 +91,8 @@
     <button class="btn btn-default" onclick='showTable(document.getElementById("selecttable").value)'>
       <span class="glyphicon glyphicon-refresh">Refresh</span>
     </button>
+
+    <a class="btn btn-default" href="../login/logout.php">Logout</a>
   </div>
 
 </body>
